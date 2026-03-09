@@ -1,0 +1,34 @@
+batch_size: 128
+learning_rate: 5.0e-4
+epochs: 30
+device: cuda
+gpu_id: 0
+seed: 42
+num_workers: 0
+
+# Regularisation
+l2: 0.0
+
+# LR scheduler (StepLR)
+lr_dc_step: 1000
+lr_dc: 0.0
+
+# Early stopping
+patience: 10
+
+# Prediction threshold
+threshold: 0.3
+
+# Max sequence dimensions
+max_seq_length: 100   # max codes per visit (diag/proc/med set)
+max_record_num: 10    # max visits per patient
+
+# Warmup proportion for linear LR warmup
+warmup_proportion: 0.1
+
+# Whether to filter out single-visit patients
+filter: false
+
+# Output paths
+ckpt_dir: /home/hiro/Downloads/Workspace/Leader_pipeline/data/checkpoints
+log_dir: /home/hiro/Downloads/Workspace/Leader_pipeline/logs
