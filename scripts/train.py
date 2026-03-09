@@ -247,7 +247,7 @@ class OfflineDistillMedRecDataset(DistillMedRecDataset):
         base = super().__getitem__(item)
         rec = self.records[item]
         hidden_states = np.array(rec["hidden_states"], dtype=np.float32)
-        logits = np.array(rec["target"], dtype=np.float32)
+        logits = np.array(rec["logits"], dtype=np.float32)
         return base + (hidden_states, logits)
 
 
