@@ -2,10 +2,10 @@
 dataset: mimic3
 
 # MIMIC-III raw CSV directory
-mimic3_path: /home/hiro/Downloads/Workspace/data/physionet.org/files/mimiciii/1.4
+mimic3_path: /mnt/data/hungnh2/physionet.org/files/mimiciii/1.4
 
 # MIMIC-IV raw CSV directory (hosp/ subdirectory)
-mimic4_path: /home/hiro/Downloads/Workspace/data/physionet.org/files/mimiciv/3.1/hosp
+mimic4_path: /mnt/data/hungnh2/physionet.org/files/mimiciv/3.1/hosp
 
 # Shared mapping files (NDC -> RXCUI -> ATC, drug info for DDI/SMILES)
 ndc2rxcui_path: /home/hiro/Downloads/Workspace/archived/drug_rec/SafeDrug/data/input/ndc2RXCUI.txt
@@ -19,7 +19,7 @@ atc_names_path: /home/hiro/Downloads/Workspace/data/WHO ATC-DDD 2021-12-03.csv
 # ICD description CSVs are loaded from mimic3_path (D_ICD_DIAGNOSES.csv.gz, D_ICD_PROCEDURES.csv.gz)
 
 # Processed output directory (preprocess.py writes here; train/evaluate read from here)
-output_dir: /home/hiro/Downloads/Workspace/Leader_pipeline/data
+output_dir: /home/hungnh2/workspace/Leader_pipeline/data
 
 # Log directory
-log_dir: /home/hiro/Downloads/Workspace/Leader_pipeline/logs
+log_dir: /mnt/data/hungnh2/Leader_pipeline/logs

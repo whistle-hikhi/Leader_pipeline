@@ -1,16 +1,16 @@
 #!/bin/bash
-#SBATCH --job-name=leader_train
-#SBATCH --output=logs/%j.out
-#SBATCH --error=logs/%j.err
+SBATCH --job-name=leader_train_teacher
+SBATCH --output=/mnt/data/hungnh2/leader/logs/%j.out
+SBATCH --error=/mnt/data/hungnh2/leader/logs/%j.err
 
-#SBATCH --partition=main
-#SBATCH --time=24:00:00
+SBATCH --partition=main
+SBATCH --time=00:10:00
 
-#SBATCH --ntasks=1
-#SBATCH --cpus-per-task=4
-#SBATCH --mem=32G
+SBATCH --ntasks=1
+SBATCH --cpus-per-task=4
+SBATCH --mem=32G
 
-#SBATCH --gres=gpu:1
+SBATCH --gres=gpu:1
 
 echo "Start time: $(date)"
 echo "Running on node: $(hostname)"
@@ -21,7 +21,7 @@ source $HOME/miniconda3/etc/profile.d/conda.sh
 conda activate leader
 
 # Move to project root
-cd $HOME/Downloads/Workspace/Leader_pipeline
+cd $HOME/workspace/Leader_pipeline
 
 # Create log directory if it doesn't exist
 mkdir -p logs
@@ -30,9 +30,14 @@ mkdir -p logs
 # python scripts/preprocess.py --data configs/data.yaml
 
 # Run training
-python scripts/train.py \
-    --data  configs/data.yaml \
-    --model configs/model.yaml \
-    --train configs/train.yaml
+python scripts/finetune_llm.py \
+    --data       configs/data.yaml \
+    --model      configs/model.yaml \
+    --train      configs/train.yaml \
+    --llm_path   resources/llama-7b \
+    --output_dir resources/llm_teacher \
+    --epochs     3 \
+    --batch_size 4 \
+    --lr         2e-4
 
 echo "End time: $(date)"
