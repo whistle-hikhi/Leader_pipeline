@@ -120,8 +120,8 @@ python scripts/finetune_llm.py \
     --data       configs/data.yaml \
     --model      configs/model.yaml \
     --train      configs/train.yaml \
-    --llm_path   resources/llama-7b \
-    --output_dir resources/llm_teacher \
+    --llm_path   /mnt/data/hungnh2/leader/resources/llama-7b \
+    --output_dir /mnt/data/hungnh2/leader/resources/llm_teacher \
     --epochs     3 \
     --batch_size 4 \
     --lr         2e-4
@@ -296,3 +296,7 @@ python scripts/train.py --data configs/data.yaml --model configs/model.yaml --tr
 - Store large datasets on shared storage (`/mnt/data/`) — avoid `$HOME`
 - Run a short debug job before submitting long runs
 - Use `logs/%j.out` and `logs/%j.err` for per-job output files
+
+```bash
+srun --pty --time=01:00:00 --ntasks=1 --cpus-per-task=4 --mem=8G --gres=gpu:1 bash
+```
